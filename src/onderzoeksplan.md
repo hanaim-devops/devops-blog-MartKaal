@@ -39,9 +39,15 @@ Helm en GitOps kunnen goed samenwerken om versiebeheer en rollback van applicati
 Er kunnen verschillende problemen optreden bij het gebruik van Helm in Kubernetes. Ten eerste kan het complex zijn om afhankelijkheden tussen verschillende Helm charts goed te beheren, vooral bij grotere applicaties met meerdere microservices. Ook kan versiebeheer lastig zijn als er geen consistente strategie is voor het onderhouden van Helm chart-versies. Beveiliging is een ander aandachtspunt: hoewel Helm v3 de Tiller-component heeft verwijderd, moet je nog steeds zorgen voor goed toegangsbeheer en het veilig opslaan van gevoelige gegevens, zoals wachtwoorden, binnen de charts. Verder kunnen problemen ontstaan bij schaalbare omgevingen, waar de configuratie en het beheer van meerdere releases lastig te coördineren kunnen zijn.
 
 #### Bronnen (zelf gecontroleerd)
-- [Helm v3: A Helm without Tiller](https://helm.sh/blog/helm-3-released/)
 - [5 shortcomings of Helm - The Kubernetes package manager](https://www.linkedin.com/pulse/5-shortcomings-helm-kubernetes-packagemanager-philip-miglinci-jqs0f)
 
 ## Prompts
 #### Gegeven prompt voor hoofdvraag en deelvragen
 Op het moment volg ik de de minor 'DevOps' aan de HAN in Arnhem. Gedurende deze minor leren we kennismaken met de wereld van devops, denk hierbij aan docker en kubernetes. Nu zitten we in een onderzoeksweek en moeten we allemaal een onderwerp wat met devops te maken heeft onderzoeken. Aan het einde van deze week moeten we ook een presentatie geven waar we een korte pitch geven over ons onderwerp. Ik wil tijdens deze week Helm (kubernetes package manager) onderzoeken. Mijn doelgroep zijn mijn medestudenten van de minor 'DevOps' en de docenten daarvan. Geef mij hiervoor een hoofdvraag en bijpassende deelvragen.
+
+## Bronnen
+- OpenAI. (2024). ChatGPT (7 oktober GPT-4o) [Large language model]. Gesprek over Helm en GitOps
+- *Helm | Helm.* (n.d.). https://helm.sh/
+- *What is Helm?* (n.d.). https://www.redhat.com/en/topics/devops/what-is-helm
+- Seligson, H., & Seligson, H. (2024, July 26). *Using Helm with GitOps.* Codefresh. https://codefresh.io/blog/using-helm-with-gitops/
+- Miglinci, P. (2024, July 15). *5 shortcomings of Helm - The Kubernetes package manager.* https://www.linkedin.com/pulse/5-shortcomings-helm-kubernetes-packagemanager-philip-miglinci-jqs0f

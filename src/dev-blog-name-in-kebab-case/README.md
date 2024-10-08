@@ -72,3 +72,8 @@ TODO
 - Hbo-I. (n.d.). *ICT Research Methods — Methods Pack for research in ICT.* ICT Research Methods. https://www.ictresearchmethods.nl/
 - *Helm | Using helm.* (n.d.). https://helm.sh/docs/intro/using_helm/
 - Schmitt, J. (2023, March 17). *What is Helm? A complete guide.* CircleCI. https://circleci.com/blog/what-is-helm/
+Installeer de aangeraden [mdlint](https://github.com/DavidAnson/markdownlint). Voeg je eerste plaatje en bronnen in conform APA (HAN, z.d.).
+
+## Bronnen
+
+- <https://github.com/DavidAnson/markdownlint> (TODO APA-ify, zie voorbeeld in [onderzoeksplan](../onderzoeksplan.md))

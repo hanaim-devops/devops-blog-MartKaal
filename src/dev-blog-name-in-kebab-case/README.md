@@ -239,29 +239,42 @@ Bij `Revision` zie ik dat de webapplicatie is geüpdatet naar versie 2.0. Dit ko
 
 
 ## hoe gebruik je Helm om GitOps aanpak te bereiken?
+In een GitOps-omgeving staan alle configuraties, inclusief Helm-charts, onder versiebeheer in een Git-repository. Git fungeert hierbij als de enige bron van waarheid voor de applicatieconfiguraties.
 
-TODO
-- Hoe werkt GitOps met Helm?
-    - Hoe werkt GitOps met Helm?
-    - Hoe kan Helm bijdragen aan een GitOps-aanpak?
+Tools zoals [Argo CD](https://argo-cd.readthedocs.io/en/stable/) en [Flux](https://fluxcd.io/) spelen een belangrijke rol in een GitOps-workflow. Deze tools monitoren continu de Git-repository op wijzigingen in de configuratie, inclusief updates van Helm-charts. Zodra ze een wijziging detecteren, rollen ze automatisch de nieuwe versie van de applicatie uit in het Kubernetes-cluster. Argo CD en Flux ondersteunen Helm volledig en kunnen automatisch de benodigde Kubernetes-resources aanmaken en bijwerken.
+
+Een van de grote voordelen van GitOps is versiebeheer. Met Helm en GitOps kun je eenvoudig terugkeren naar een eerdere versie van de applicatie door een vorige versie van de Helm-chart uit de Git-repository te herstellen. De GitOps-tool (zoals Argo CD of Flux) herkent deze rollback en voert deze direct uit in het Kubernetes-cluster.
+
+Door Helm en GitOps te combineren, profiteer je van het beste van beide werelden: de gestandaardiseerde en herbruikbare applicatieconfiguraties van Helm, samen met de kracht van versiebeheer en automatisering via GitOps. Dit leidt tot snellere deployments, betere samenwerking binnen teams en een eenvoudiger rollback-mechanisme bij problemen.
+
+
 
 ## Welke mogelijke problemen kunnen ontstaan bij het gebruik van Helm in een omgeving met Kubernetes?
 
-TODO
-- Wat zijn de mogelijke problemen?
-    - Wat zijn de mogelijke problemen bij het gebruik van Helm in Kubernetes?
-    - Hoe kun je deze problemen oplossen?
+Helm is erg handig voor het beheren van applicaties in Kubernetes, maar er kunnen ook problemen ontstaan bij het gebruik ervan.
+
+### Complexiteit
+Complexiteit in het gebruik van Helm Charts, vooral complexe charts, kunnen lastig te begrijpen en te beheren zijn. Als de chart veel parameters bevat of als de template-code omvangrijk is, kan het moeilijk zijn om aanpassingen te maken zonder diepgaande kennis van zowel Helm als Kubernetes. Dit kan leiden tot misconfiguraties of fouten die moeilijk te debuggen zijn. (Miglinci, 2024)
+
+### Dependencies en gebruik van externe repositories
+Helm charts kunnen beveiligingsproblemen met zich meebrengen, vooral wanneer je charts van externe bronnen gebruikt. Omdat Helm veel macht heeft binnen een Kubernetes-cluster, kan een slecht geconfigureerde of kwaadaardige chart schadelijke code uitvoeren. Daarom moet je zorgvuldig omgaan met de herkomst en de configuraties van de charts die je gebruikt. (*Security Risks of Kubernetes Helm Charts and What to Do About Them*, n.d.)
+
 
 ## Conclusie
- 
+In deze blog heb ik onderzocht hoe Helm bijdraagt aan het beheer en gebruik van applicaties in Kubernetes. Helm is een  package manager die de complexiteit van het beheer van Kubernetes-applicaties vermindert. Door het gebruik van Helm-charts kunnen ontwikkelaars en beheerders applicaties configureren en implementeren in hun Kubernetes-clusters.
 
-### Bronnen
+Helm biedt meerdere voordelen die het beheer van applicaties verbeterd. Ten eerste stelt Helm gebruikers in staat om herbruikbare en gestandaardiseerde configuraties te creëren, wat de snelheid en efficiëntie van deployments vergroot. Ten tweede maakt Helm versiebeheer mogelijk, waardoor teams eenvoudig kunnen terugvallen op eerdere versies van applicaties en eventuele fouten snel kunnen verhelpen.
+
+Ondanks de vele voordelen zijn er ook nadelen verbonden aan het gebruik van Helm, zoals de complexiteit van charts en mogelijke beveiligingsrisico’s.
+
+Samenvattend draagt Helm op verschillende manieren bij aan het beheer en gebruik van applicaties in Kubernetes. Het maakt applicatiebeheer efficiënter en transparanter, en stelt teams in staat om flexibeler en sneller te reageren op veranderingen in de ontwikkel- en productieomgevingen.
+
+## Bronnen
 - Hbo-I. (n.d.). *ICT Research Methods — Methods Pack for research in ICT.* ICT Research Methods. https://www.ictresearchmethods.nl/
 - *Helm | Using helm.* (n.d.). https://helm.sh/docs/intro/using_helm/
 - Schmitt, J. (2023, March 17). *What is Helm? A complete guide.* CircleCI. https://circleci.com/blog/what-is-helm/
 Installeer de aangeraden [mdlint](https://github.com/DavidAnson/markdownlint). Voeg je eerste plaatje en bronnen in conform APA (HAN, z.d.).
+- Miglinci, P. (2024, July 15). *5 shortcomings of Helm - The Kubernetes package manager.* https://www.linkedin.com/pulse/5-shortcomings-helm-kubernetes-packagemanager-philip-miglinci-jqs0f
+- *Security Risks of Kubernetes Helm Charts and What to do About Them.* (n.d.). Tripwire. https://www.tripwire.com/state-of-security/security-risks-kubernetes-helm-charts-and-what-do-about-them
+- Devopsjourney. (n.d.). *helm-webapp/templates-original at main · devopsjourney1/helm-webapp.* GitHub. https://github.com/devopsjourney1/helm-webapp/tree/main/templates-original
 
-## Bronnen
-
-- <https://github.com/DavidAnson/markdownlint> (TODO APA-ify, zie voorbeeld in [onderzoeksplan](../onderzoeksplan.md))
-- https://github.com/devopsjourney1/helm-webapp/tree/main/templates-original

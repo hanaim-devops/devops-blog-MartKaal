@@ -15,10 +15,10 @@ Ik gebruik de volgende deelvragen om deze vraag te beantwoorden:
 - Welke mogelijke problemen kunnen ontstaan bij het gebruik van Helm in een omgeving met Kubernetes?
 
 
-Bij het beantwoorden van de deelvragen maak ik gebruik van onderzoeksmethoden uit de ICT Research Methods (Hbo-I, n.d.) zoals *Literature study* (Library), *Community research* (Library) en *Prototyping* (Workshop).
+Bij het beantwoorden van de deelvragen maak ik gebruik van onderzoeksmethoden uit de ICT Research Methods (HBOi, z.d.) zoals *Literature study* (Library), *Community research* (Library) en *Prototyping* (Workshop).
 
 ## Wat is Helm en hoe werkt het als package manager voor Kubernetes?
-Helm is een package manager voor Kubernetes en is ideaal voor GitOps in Kubernetes. Het biedt een handige manier om verzamelingen van YAML-bestanden te verpakken met een Helm-chart voor de Kubernetes-applicatie en maakt distributie mogelijk via een Helm-repository. Helm bevat 3 belangrijke concepten. (*Helm* | *Using Helm*, n.d.)
+Helm is een package manager voor Kubernetes en is ideaal voor GitOps in Kubernetes. Het biedt een handige manier om verzamelingen van YAML-bestanden te verpakken met een Helm-chart voor de Kubernetes-applicatie en maakt distributie mogelijk via een Helm-repository. Helm bevat 3 belangrijke concepten (Helm, z.d.). 
 
 **Three Big Concepts**
 - Helm Chart
@@ -27,7 +27,7 @@ Helm is een package manager voor Kubernetes en is ideaal voor GitOps in Kubernet
 
 ### Helm Charts
 
-Een helm chart is een package die alle resources bevat om een applicatie te draaien op een Kubernetes-cluster. Het bevat een verzameling van YAML-bestanden die de configuratie van de applicatie definiëren. Met Helm kun je een chart installeren, updaten en verwijderen, waardoor het beheer van applicaties in Kubernetes eenvoudiger wordt. (Schmitt, 2023)
+Een helm chart is een package die alle resources bevat om een applicatie te draaien op een Kubernetes-cluster. Het bevat een verzameling van YAML-bestanden die de configuratie van de applicatie definiëren. Met Helm kun je een chart installeren, updaten en verwijderen, waardoor het beheer van applicaties in Kubernetes eenvoudiger wordt (Schmitt, 2023). 
 
 ![helm-chart-example-1.webp](plaatjes%2Fhelm-chart-example-1.webp)
 
@@ -36,11 +36,11 @@ Deze specifieke map bevat een Chart.yaml-bestand waarin de globale variabelen, v
 Je kunt de Helm-chart delen om de herbruikbaarheid voor anderen te vergroten. Delen gebeurt door de chart op te slaan in een Helm-repository. Deze repository kan vervolgens met anderen worden gedeeld, zodat zij de applicatie met de chart kunnen implementeren.
 
 ### Helm Repository
-repositories zijn locaties waar Helm-charts worden opgeslagen en gedeeld. Het is een manier om charts te delen met anderen en om charts te vinden die door anderen zijn gemaakt. Helm heeft een standaard repository, maar je kunt ook je eigen repository hosten of een externe repository gebruiken. (Schmitt, 2023)
+repositories zijn locaties waar Helm-charts worden opgeslagen en gedeeld. Het is een manier om charts te delen met anderen en om charts te vinden die door anderen zijn gemaakt. Helm heeft een standaard repository, maar je kunt ook je eigen repository hosten of een externe repository gebruiken (Schmitt, 2023). 
 
 
 ### Helm Release
-Elke installatie of upgrade creëert een Helm-release. Een Helm-release is een actieve instantie van je Helm-chart die draait binnen een Kubernetes-cluster of namespace. Het is in wezen een instantie van een versiegebonden, templated chart. Het is ook mogelijk om meerdere releases van dezelfde chart in één cluster of namespace te hebben, omdat de chart zelfstandig functioneert. Bij fouten kun je een Helm-release ook terugzetten naar een vorige versie, later in de blog hier meer over. (Schmitt, 2023)
+Elke installatie of upgrade creëert een Helm-release. Een Helm-release is een actieve instantie van je Helm-chart die draait binnen een Kubernetes-cluster of namespace. Het is in wezen een instantie van een versiegebonden, templated chart. Het is ook mogelijk om meerdere releases van dezelfde chart in één cluster of namespace te hebben, omdat de chart zelfstandig functioneert. Bij fouten kun je een Helm-release ook terugzetten naar een vorige versie, later in de blog hier meer over (Schmitt, 2023). 
 
 ## Hoe helpt Helm bij het uitvoeren van applicaties in Kubernetes?
 
@@ -241,9 +241,9 @@ Bij `Revision` zie ik dat de webapplicatie nu 2 versies heeft. Dit komt doordat 
 ## hoe gebruik je Helm om GitOps aanpak te bereiken?
 In een GitOps-omgeving staan alle configuraties, inclusief Helm-charts, onder versiebeheer in een Git-repository. Git fungeert hierbij als de enige bron van waarheid voor de applicatieconfiguraties.
 
-Tools zoals [Argo CD](https://argo-cd.readthedocs.io/en/stable/) en [Flux](https://fluxcd.io/) spelen een belangrijke rol in een GitOps-workflow. Deze tools monitoren continu de Git-repository op wijzigingen in de configuratie, inclusief updates van Helm-charts. Zodra ze een wijziging detecteren, rollen ze automatisch de nieuwe versie van de applicatie uit in het Kubernetes-cluster. Argo CD en Flux ondersteunen Helm volledig en kunnen automatisch de benodigde Kubernetes-resources aanmaken en bijwerken.
+Tools zoals [Argo CD](https://argo-cd.readthedocs.io/en/stable/) en [Flux](https://fluxcd.io/) spelen een belangrijke rol in een GitOps-workflow. Deze tools monitoren continu de Git-repository op wijzigingen in de configuratie, inclusief updates van Helm-charts. Zodra ze een wijziging detecteren, rollen ze automatisch de nieuwe versie van de applicatie uit in het Kubernetes-cluster. Argo CD en Flux ondersteunen Helm volledig en kunnen automatisch de benodigde Kubernetes-resources aanmaken en bijwerken (Seligson & Seligson, 2024). 
 
-Een van de grote voordelen van GitOps is versiebeheer. Met Helm en GitOps kun je eenvoudig terugkeren naar een eerdere versie van de applicatie door een vorige versie van de Helm-chart uit de Git-repository te herstellen. De GitOps-tool (zoals Argo CD of Flux) herkent deze rollback en voert deze direct uit in het Kubernetes-cluster.
+Een van de grote voordelen van GitOps is versiebeheer. Met Helm en GitOps kun je eenvoudig terugkeren naar een eerdere versie van de applicatie door een vorige versie van de Helm-chart uit de Git-repository te herstellen. De GitOps-tool (zoals Argo CD of Flux) herkent deze rollback en voert deze direct uit in het Kubernetes-cluster (Seligson & Seligson, 2024).
 
 Door Helm en GitOps te combineren, profiteer je van het beste van beide werelden: de gestandaardiseerde en herbruikbare applicatieconfiguraties van Helm, samen met de kracht van versiebeheer en automatisering via GitOps. Dit leidt tot snellere deployments, betere samenwerking binnen teams en een eenvoudiger rollback-mechanisme bij problemen.
 
@@ -254,10 +254,10 @@ Door Helm en GitOps te combineren, profiteer je van het beste van beide werelden
 Helm is erg handig voor het beheren van applicaties in Kubernetes, maar er kunnen ook problemen ontstaan bij het gebruik ervan.
 
 ### Complexiteit
-Complexiteit in het gebruik van Helm Charts, vooral complexe charts, kunnen lastig te begrijpen en te beheren zijn. Als de chart veel parameters bevat of als de template-code omvangrijk is, kan het moeilijk zijn om aanpassingen te maken zonder diepgaande kennis van zowel Helm als Kubernetes. Dit kan leiden tot misconfiguraties of fouten die moeilijk te debuggen zijn. (Miglinci, 2024)
+Complexiteit in het gebruik van Helm Charts, vooral complexe charts, kunnen lastig te begrijpen en te beheren zijn. Als de chart veel parameters bevat of als de template-code omvangrijk is, kan het moeilijk zijn om aanpassingen te maken zonder diepgaande kennis van zowel Helm als Kubernetes. Dit kan leiden tot misconfiguraties of fouten die moeilijk te debuggen zijn (Miglinci, 2024). 
 
 ### Dependencies en gebruik van externe repositories
-Helm charts kunnen beveiligingsproblemen met zich meebrengen, vooral wanneer je charts van externe bronnen gebruikt. Omdat Helm veel macht heeft binnen een Kubernetes-cluster, kan een slecht geconfigureerde of kwaadaardige chart schadelijke code uitvoeren. Daarom moet je zorgvuldig omgaan met de herkomst en de configuraties van de charts die je gebruikt. (*Security Risks of Kubernetes Helm Charts and What to Do About Them*, n.d.)
+Helm charts kunnen beveiligingsproblemen met zich meebrengen, vooral wanneer je charts van externe bronnen gebruikt. Omdat Helm veel macht heeft binnen een Kubernetes-cluster, kan een slecht geconfigureerde of kwaadaardige chart schadelijke code uitvoeren. Daarom moet je zorgvuldig omgaan met de herkomst en de configuraties van de charts die je gebruikt (Maayan & Tripwire, 2024). 
 
 
 ## Conclusie
@@ -270,11 +270,11 @@ Ondanks de vele voordelen zijn er ook nadelen verbonden aan het gebruik van Helm
 Samenvattend draagt Helm op verschillende manieren bij aan het beheer en gebruik van applicaties in Kubernetes. Het maakt applicatiebeheer efficiënter en transparanter, en stelt teams in staat om flexibeler en sneller te reageren op veranderingen in de ontwikkel- en productieomgevingen.
 
 ## Bronnen
-- Hbo-I. (n.d.). *ICT Research Methods — Methods Pack for research in ICT.* ICT Research Methods. https://www.ictresearchmethods.nl/
-- *Helm | Using helm.* (n.d.). https://helm.sh/docs/intro/using_helm/
+- HBOi. (z.d.). *ICT Research Methods — Methods Pack for research in ICT. ICT Research Methods.* https://www.ictresearchmethods.nl/
+- Helm. (z.d.). Helm | *Using helm.* https://helm.sh/docs/intro/using_helm/
 - Schmitt, J. (2023, March 17). *What is Helm? A complete guide.* CircleCI. https://circleci.com/blog/what-is-helm/
-Installeer de aangeraden [mdlint](https://github.com/DavidAnson/markdownlint). Voeg je eerste plaatje en bronnen in conform APA (HAN, z.d.).
 - Miglinci, P. (2024, July 15). *5 shortcomings of Helm - The Kubernetes package manager.* https://www.linkedin.com/pulse/5-shortcomings-helm-kubernetes-packagemanager-philip-miglinci-jqs0f
-- *Security Risks of Kubernetes Helm Charts and What to do About Them.* (n.d.). Tripwire. https://www.tripwire.com/state-of-security/security-risks-kubernetes-helm-charts-and-what-do-about-them
-- Devopsjourney. (n.d.). *helm-webapp/templates-original at main · devopsjourney1/helm-webapp.* GitHub. https://github.com/devopsjourney1/helm-webapp/tree/main/templates-original
+- Maayan, G. D. & Tripwire. (2024, 6 februari). *Security Risks of Kubernetes Helm Charts and What to do About Them.* Tripwire. https://www.tripwire.com/state-of-security/security-risks-kubernetes-helm-charts-and-what-do-about-them
+- Brad [devopsjourney]. (2024, 5 april). helm-webapp/templates-original at main · devopsjourney1/helm-webapp. GitHub. https://github.com/devopsjourney1/helm-webapp/tree/main/templates-original
+- Seligson, H., & Seligson, H. (2024, 26 juli). *Using Helm with GitOps.* Codefresh. https://codefresh.io/blog/using-helm-with-gitops/
 

@@ -142,7 +142,7 @@ Als ik nu een release maak met het volgende commando `helm install mywebapp-rele
 
 ![running v1.png](plaatjes%2Frunning%20v1.png)
 
-Maar zal ik Helm templating toepassen om de webapplicatie te upgraden naar versie 2.0. In de template bestanden zijn er een aantal waardes die ik wil veranderen omdat ze of vaak voorkomen in meerdere files of ik wil het makkelijk kunnen aanpassen. Dit doe ik door gebruik te maken van de templating engine van Helm. Dit gebeurt in de file `values.yaml` en de template files.
+Ik zal Helm templating toepassen om de webapplicatie te upgraden naar versie 2.0. In de templatebestanden wil ik enkele waarden aanpassen omdat ze vaak voorkomen in meerdere bestanden of omdat ik ze makkelijk wil kunnen wijzigen. Dit doe ik door de templating engine van Helm te gebruiken. Ik pas de wijzigingen aan in de `values.yaml` en de templatebestanden.
 
 In de `values.yaml` file voeg ik de volgende waardes toe:
 ```yaml
@@ -235,7 +235,7 @@ Met het commando `helm list` kan ik alle releases zien die ik heb gemaakt.
 
 ![list.png](plaatjes%2Flist.png)
 
-Bij `Revision` zie ik dat de webapplicatie is geüpdatet naar versie 2.0. Dit komt omdat ik de waardes in de `values.yaml` file heb aangepast en de template files heb aangepast om deze waardes te gebruiken. De originele install is nog steeds beschikbaar en kan worden teruggezet met het commando `helm rollback mywebapp-release 1`. Maar dit zal ik later nog in de blog behandelen.
+Bij `Revision` zie ik dat de webapplicatie nu 2 versies heeft. Dit komt doordat ik de waarden in de `values.yaml` heb aangepast en de templatebestanden heb bijgewerkt om deze waarden te gebruiken. De originele installatie is nog steeds beschikbaar en kan worden teruggezet met het commando `helm rollback mywebapp-release 1`. Dit zal ik later in de blog verder behandelen.
 
 
 ## hoe gebruik je Helm om GitOps aanpak te bereiken?

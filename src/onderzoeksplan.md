@@ -43,7 +43,7 @@ Er kunnen verschillende problemen optreden bij het gebruik van Helm in Kubernete
 
 ## Prompts
 #### Gegeven prompt voor hoofdvraag en deelvragen
-Op het moment volg ik de de minor 'DevOps' aan de HAN in Arnhem. Gedurende deze minor leren we kennismaken met de wereld van devops, denk hierbij aan docker en kubernetes. Nu zitten we in een onderzoeksweek en moeten we allemaal een onderwerp wat met devops te maken heeft onderzoeken. Aan het einde van deze week moeten we ook een presentatie geven waar we een korte pitch geven over ons onderwerp. Ik wil tijdens deze week Helm (kubernetes package manager) onderzoeken. Mijn doelgroep zijn mijn medestudenten van de minor 'DevOps' en de docenten daarvan. Geef mij hiervoor een hoofdvraag en bijpassende deelvragen.
+Op het moment volg ik de de minor 'DevOps' aan de HAN in Arnhem.In deze minor maken we kennis met de wereld van DevOps, denk hierbij aan docker en kubernetes. Nu zitten we in een onderzoeksweek en moeten we allemaal een onderwerp wat met devops te maken heeft onderzoeken. Aan het einde van deze week moeten we ook een presentatie geven waar we een korte pitch geven over ons onderwerp. Ik wil tijdens deze week Helm (kubernetes package manager) onderzoeken. Mijn doelgroep zijn mijn medestudenten van de minor 'DevOps' en de docenten daarvan. Geef mij hiervoor een hoofdvraag en bijpassende deelvragen.
 
 https://chatgpt.com/share/670686cb-33a4-8008-b716-486a4c765f65 
 

@@ -5,6 +5,21 @@
 *[Mart Kaal, oktober 2024.](https://github.com/hanaim-devops/devops-blog-MartKaal)*
 <hr/>
 
+## Inhoudsopgave
+- [Introductie](#introductie)
+- [Wat is Helm en hoe werkt het als package manager voor Kubernetes?](#wat-is-helm-en-hoe-werkt-het-als-package-manager-voor-kubernetes)
+  - [Helm Charts](#helm-charts)
+  - [Helm Repository](#helm-repository)
+  - [Helm Release](#helm-release)
+- [Hoe helpt Helm bij het uitvoeren van applicaties in Kubernetes?](#hoe-helpt-helm-bij-het-uitvoeren-van-applicaties-in-kubernetes)
+- [Hoe gebruik je Helm om een GitOps-aanpak te bereiken?](#hoe-gebruik-je-helm-om-gitops-aanpak-te-bereiken)
+- [Welke mogelijke problemen kunnen ontstaan bij het gebruik van Helm in een omgeving met Kubernetes?](#welke-mogelijke-problemen-kunnen-ontstaan-bij-het-gebruik-van-helm-in-een-omgeving-met-kubernetes)
+  - [Complexiteit](#complexiteit)
+  - [Beveiligingsrisico's](#beveiligingsrisicos)
+- [Conclusie](#conclusie)
+
+## introductie
+
 In de wereld van moderne softwareontwikkeling speelt Kubernetes een cruciale rol in het beheren van containerized applicaties. Terwijl Kubernetes krachtige mogelijkheden biedt voor schaalbaarheid en flexibiliteit, kan het beheren van applicaties soms complex en tijdrovend zijn. Hier komt Helm in beeld. In deze blog beantwoord ik de vraag: Hoe draagt Helm bij aan het beheer en gebruik van applicaties in Kubernetes?
 
 Ik gebruik de volgende deelvragen om deze vraag te beantwoorden:
@@ -29,7 +44,10 @@ Helm is een package manager voor Kubernetes en is ideaal voor GitOps in Kubernet
 
 Een helm chart is een package die alle resources bevat om een applicatie te draaien op een Kubernetes-cluster. Het bevat een verzameling van YAML-bestanden die de configuratie van de applicatie definiëren. Met Helm kun je een chart installeren, updaten en verwijderen, waardoor het beheer van applicaties in Kubernetes eenvoudiger wordt (Schmitt, 2023). 
 
-![helm-chart-example-1.webp](plaatjes%2Fhelm-chart-example-1.webp)
+![Map structuur](plaatjes%2Fhelm-chart-example-1.webp)
+
+*Afbeelding 1 - Map structuur*
+
 
 Deze specifieke map bevat een Chart.yaml-bestand waarin de globale variabelen, versies en beschrijvingen zijn opgeslagen. De map templates bevat de YAML-bestanden voor Kubernetes, ook wel bekend als de Kubernetes-manifesten.
 
@@ -54,9 +72,11 @@ Als eerst moet helm gedownload worden op één van de volgende manieren:
 
 Met het commando `helm create webapp1` maak je een nieuwe helm chart aan. Dit commando maakt een nieuwe map aan met de naam `webapp` en bevat de standaard bestanden voor een helm chart.
 
-De mapstructuur van de helm chart ziet er als volgt uit:
+In afbeelding 2 is te zien hoe de folder structuur eruit ziet na het uitvoeren van het commando.
 
-![folder created.png](plaatjes%2Ffolder%20created.png)
+![Aangemaakte folder.png](plaatjes%2Ffolder%20created.png)
+
+*Afbeelding 2 - Aangemaakte folder met commando*
 
 De belangrijkste bestanden in de map zijn:
 - `Chart.yaml`: Bevat metadata over de chart, zoals de naam, versie en beschrijving.
@@ -141,6 +161,8 @@ data:
 Als ik nu een release maak met het volgende commando `helm install mywebapp-release ./webapp1` dan wordt de webapplicatie geïnstalleerd in het Kubernetes-cluster.
 
 ![running v1.png](plaatjes%2Frunning%20v1.png)
+
+*Afbeelding 3 - Kubernetes draait alle pods en services*
 
 Ik zal Helm templating toepassen om de webapplicatie te upgraden naar versie 2.0. In de templatebestanden wil ik enkele waarden aanpassen omdat ze vaak voorkomen in meerdere bestanden of omdat ik ze makkelijk wil kunnen wijzigen. Dit doe ik door de templating engine van Helm te gebruiken. Ik pas de wijzigingen aan in de `values.yaml` en de templatebestanden.
 
@@ -233,7 +255,9 @@ Als ik nu de release upgrade met het volgende commando `helm upgrade mywebapp-re
 
 Met het commando `helm list` kan ik alle releases zien die ik heb gemaakt.
 
-![list.png](plaatjes%2Flist.png)
+![Helm releases](plaatjes%2Flist.png)
+
+*Afbeelding 4 - Helm releases*
 
 Bij `Revision` zie ik dat de webapplicatie nu 2 versies heeft. Dit komt doordat ik de waarden in de `values.yaml` heb aangepast en de templatebestanden heb bijgewerkt om deze waarden te gebruiken. De originele installatie is nog steeds beschikbaar en kan worden teruggezet met het commando `helm rollback mywebapp-release 1`. Dit zal ik later in de blog verder behandelen.
 
@@ -256,9 +280,18 @@ Helm is erg handig voor het beheren van applicaties in Kubernetes, maar er kunne
 ### Complexiteit
 Complexiteit in het gebruik van Helm Charts, vooral complexe charts, kunnen lastig te begrijpen en te beheren zijn. Als de chart veel parameters bevat of als de template-code omvangrijk is, kan het moeilijk zijn om aanpassingen te maken zonder diepgaande kennis van zowel Helm als Kubernetes. Dit kan leiden tot misconfiguraties of fouten die moeilijk te debuggen zijn (Miglinci, 2024). 
 
-### Dependencies en gebruik van externe repositories
-Helm charts kunnen beveiligingsproblemen met zich meebrengen, vooral wanneer je charts van externe bronnen gebruikt. Omdat Helm veel macht heeft binnen een Kubernetes-cluster, kan een slecht geconfigureerde of kwaadaardige chart schadelijke code uitvoeren. Daarom moet je zorgvuldig omgaan met de herkomst en de configuraties van de charts die je gebruikt (Maayan & Tripwire, 2024). 
+### Beveiligingsrisico's
+Helm charts kunnen beveiligingsproblemen met zich meebrengen. Het artikel van Maayan en Tripwire (2024) spreekt over de volgende beveiligingsrisico's:
 
+- Insecure default settings.
+  - Een van de meest voorkomende beveiligingsrisico's bij Kubernetes Helm charts wordt gevormd door onveilige standaardinstellingen. Veel Helm charts worden standaard geconfigureerd voor gebruiksgemak en snelle opstart in plaats van beveiliging. Hierdoor kunnen de applicatie en het Kubernetes-cluster kwetsbaar worden voor aanvallen.
+  Zo kan een Helm chart standaard ingesteld zijn om containers als root of met bevoorrechte toegang uit te voeren, wat een aanvaller de mogelijkheid kan geven om willekeurige code binnen de container uit te voeren, waardoor het hele systeem in gevaar wordt gebracht.
+- Dependencies and External sources
+  - Helm charts zijn vaak afhankelijk van andere charts of Docker-images uit externe repositories. Als deze niet veilig zijn, kan dit een risico vormen. Bijvoorbeeld wanneer een Docker-image verouderde libraries met bekende kwetsbaarheden bevat. Daarom is het belangrijk om kritisch te kijken naar de afhankelijkheden van de Helm charts.
+- Insufficent access control
+  - Onvoldoende toegangscontroles worden beschouwd als een ander belangrijk beveiligingsrisico in Helm charts. Kubernetes is ontworpen als een multi-user omgeving, waarin verschillende gebruikers of groepen verschillende toegangsrechten tot het cluster kunnen hebben. Echter, niet alle Helm charts worden met deze gedachte ontworpen.
+- Embedded secrets
+  - Een van de meest over het hoofd geziene beveiligingsrisico's in Helm charts wordt gevormd door embedded secrets. Dit kunnen API-keys, wachtwoorden en certificaten zijn die nodig zijn voor de werking van de applicatie. Wanneer deze in de Helm chart worden ingesloten, kunnen ze mogelijk worden blootgesteld aan ongeautoriseerde gebruikers of gelekt worden in logbestanden.
 
 ## Conclusie
 In deze blog heb ik onderzocht hoe Helm bijdraagt aan het beheer en gebruik van applicaties in Kubernetes. Helm is een  package manager die de complexiteit van het beheer van Kubernetes-applicaties vermindert. Door het gebruik van Helm-charts kunnen ontwikkelaars en beheerders applicaties configureren en implementeren in hun Kubernetes-clusters.
